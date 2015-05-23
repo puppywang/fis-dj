@@ -1,0 +1,36 @@
+{
+  "name": "fis-dj",
+  "version": "0.0.6",
+  "description": "Dajia frondend building system based on FIS.",
+  "main": "dj.js",
+  "bin": {
+    "dj": "bin/dj",
+    "fis-dj": "bin/dj"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fis"
+  ],
+  "author": {
+    "name": "wangyi"
+  },
+  "license": "BSD",
+  "dependencies": {
+    "fis": "^1.9.21",
+    "fis-lint-jshint": "0.0.10",
+    "fis-parser-coffee-script": "0.0.2",
+    "fis-parser-jade": "0.0.11",
+    "fis-parser-sass": "^0.3.6",
+    "fis-postpackager-autoload": "0.0.20",
+    "fis-postpackager-simple": "0.0.25",
+    "fis-postprocessor-amd": "^0.2.17",
+    "jade-highlighter": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/puppywang/fis-dj.git"
+  },
+  "homepage": "https://github.com/puppywang/fis-dj"
+}
