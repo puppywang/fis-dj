@@ -1,6 +1,6 @@
 {
   "name": "fis-dj",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Dajia frondend building system based on FIS.",
   "main": "dj.js",
   "bin": {

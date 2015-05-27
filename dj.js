@@ -6,6 +6,7 @@ fis.cli.info = fis.util.readJSON(__dirname + '/package.json');
 fis.config.merge({
     domain: 'http://static.dajia365.com',
     statics: '/public/static',
+    templates: '/application/views',
     modules: {
         parser: {
             // 配置modules.parser插件
@@ -101,7 +102,7 @@ fis.config.merge({
                 // 所有的页面文件发布到views目录下
                 reg: /^\/page\/([^\/]+)\/\1\.html/i,
                 useCache: false,
-                release: '/application/views/$1'
+                release: '${templates}/$1'
             },
             {
                 // map.json这个发布到根目录
