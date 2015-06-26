@@ -14,6 +14,7 @@ fis.config.merge({
             scss: 'sass',
             jade: 'jade',
             coffee: 'coffee-script',
+            utc: 'underscore',
         },
         postprocessor: {
             // 使用AMD规范包裹代码
@@ -42,6 +43,12 @@ fis.config.merge({
                 useMap: true
             },
             {
+                // 发布widget/page/lib里面的前端模板, 按照默认路径.
+                reg: /^\/((?:widget|page|lib)\/.*\.(?:utc))/i,
+                release: '${statics}/$1',
+                url: '/$1'
+            },
+            {
                 // 发布widget里面的css, 按照默认路径.
                 reg: /^\/(widget\/.*\.(?:css|sass|scss))/i,
                 release: '${statics}/$1',
@@ -58,7 +65,7 @@ fis.config.merge({
                 // 一级同名组件，可以引用短路径，比如modules/jquery/juqery.js
                 // 直接引用为var $ = require('jquery');
                 // 所有widget/page/modules目录下的js文件, 自动包裹成amd
-                reg: /^\/((?:widget|page|modules)\/([^\/]+)\/\2\.js)/i,
+                reg: /^\/((?:widget|page|modules|components)\/([^\/]+)\/\2\.js)/i,
                 // 是组件化的，会被jswrapper包装
                 isMod: true,
                 // id为文件夹名
@@ -68,11 +75,17 @@ fis.config.merge({
             },
             {
                 // 所有widget/page/modules目录下的js文件, 自动包裹成amd
-                reg: /^\/((?:widget|page|modules)\/(.*)\.js)/i,
+                reg: /^\/((?:widget|page|modules|components)\/(.*)\.js)/i,
                 // 是组件化的，会被jswrapper包装
                 isMod: true,
                 // id是去掉modules和.js后缀中间的部分
                 id: '$2',
+                release: '${statics}/$1',
+                url: '/$1'
+            },
+	    {
+                // 所有widget/page/modules目录下的js文件, 自动包裹成amd
+                reg: /^\/((?:modules|components)\/.*)/i,
                 release: '${statics}/$1',
                 url: '/$1'
             },
@@ -91,7 +104,7 @@ fis.config.merge({
                 useMap: true
             },
             {
-                //前端模板
+                //前端复用模板
                 reg: '**.tpl',
                 //当做类HTML处理
                 isHtmlLike: true,
@@ -101,6 +114,12 @@ fis.config.merge({
             {
                 // 所有的页面文件发布到views目录下
                 reg: /^\/page\/([^\/]+)\/\1\.html/i,
+                useCache: false,
+                release: '${templates}/$1'
+            },
+            {
+                // 其他的页面文件发布到views目录下
+                reg: /^\/page\/(.*)\.html/i,
                 useCache: false,
                 release: '${templates}/$1'
             },

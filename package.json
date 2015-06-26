@@ -1,6 +1,6 @@
 {
   "name": "fis-dj",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "Dajia frondend building system based on FIS.",
   "main": "dj.js",
   "bin": {
@@ -23,7 +23,7 @@
     "fis-parser-coffee-script": "0.0.2",
     "fis-parser-jade": "0.0.11",
     "fis-parser-sass": "^0.3.6",
-    "fis-parser-utc": "0.0.2",
+    "fis-parser-underscore": "0.0.3",
     "fis-postpackager-autoload": "0.0.20",
     "fis-postpackager-simple": "0.0.25",
     "fis-postprocessor-amd": "^0.2.17",
