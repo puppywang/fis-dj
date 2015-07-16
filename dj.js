@@ -112,12 +112,6 @@ fis.config.merge({
                 release: false
             },
             {
-                // 所有的页面文件发布到views目录下
-                reg: /^\/page\/([^\/]+)\/\1\.html/i,
-                useCache: false,
-                release: '${templates}/$1'
-            },
-            {
                 // 其他的页面文件发布到views目录下
                 reg: /^\/page\/(.*)\.html/i,
                 useCache: false,
