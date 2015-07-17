@@ -112,6 +112,12 @@ fis.config.merge({
                 release: false
             },
             {
+                // 一级同名页面模板，可以引用短路径，比如page/article_detail/article_detail.html
+                reg: /^\/page\/([^\/]+)\/\1\.html/i,
+                useCache: false,
+                release: '${templates}/$1'
+            },
+            {
                 // 其他的页面文件发布到views目录下
                 reg: /^\/page\/(.*)\.html/i,
                 useCache: false,
