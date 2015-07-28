@@ -99,7 +99,7 @@ fis.config.merge({
             },
             {
                 // 所有widget/page/modules目录下的js文件, 自动包裹成amd
-                reg: /^\/((:widget|page|components)\/(.*)\.js)/i,
+                reg: /^\/((widget|page|components)\/(.*)\.js)/i,
                 // 是组件化的，会被jswrapper包装
                 isMod: true,
                 // id是去掉modules和.js后缀中间的部分
@@ -109,7 +109,7 @@ fis.config.merge({
             },
 	    {
                 // 所有widget/page/modules目录下的其他文件, 发布一下
-                reg: /^\/((?:modules|components)\/.*)/i,
+                reg: /^\/((?:widget/page/modules|components)\/.*)/i,
                 release: '${statics}/$1',
                 url: '/$1'
             },
