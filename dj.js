@@ -32,7 +32,9 @@ fis.config.merge({
             // sass后缀的文件将输出为css文件
             // 并且在parser之后的其他处理流程中被当做css文件处理
             sass: 'css',
-            scss: 'css'
+            scss: 'css',
+            utc: 'js',
+            coffee: 'js',
         },
         path: [
             {
@@ -65,7 +67,7 @@ fis.config.merge({
                 // 一级同名组件，可以引用短路径，比如modules/jquery/juqery.js
                 // 直接引用为var $ = require('jquery');
                 // 所有widget/page/modules目录下的js文件, 自动包裹成amd
-                reg: /^\/((?:widget|page|modules|components)\/([^\/]+)\/\2\.js)/i,
+                reg: /^\/(modules\/([^\/]+)\/\2\.js)/i,
                 // 是组件化的，会被jswrapper包装
                 isMod: true,
                 // id为文件夹名
@@ -74,8 +76,20 @@ fis.config.merge({
                 url: '/$1'
             },
             {
+                // 一级同名组件，可以引用短路径，比如modules/jquery/juqery.js
+                // 直接引用为var $ = require('jquery');
                 // 所有widget/page/modules目录下的js文件, 自动包裹成amd
-                reg: /^\/((?:widget|page|modules|components)\/(.*)\.js)/i,
+                reg: /^\/((widget|page|components)\/([^\/]+)\/\3\.js)/i,
+                // 是组件化的，会被jswrapper包装
+                isMod: true,
+                // id为文件夹名
+                id: '$2/$3',
+                release: '${statics}/$1',
+                url: '/$1'
+            },
+            {
+                // 所有widget/page/modules目录下的js文件, 自动包裹成amd
+                reg: /^\/(modules\/(.*)\.js)/i,
                 // 是组件化的，会被jswrapper包装
                 isMod: true,
                 // id是去掉modules和.js后缀中间的部分
@@ -83,8 +97,18 @@ fis.config.merge({
                 release: '${statics}/$1',
                 url: '/$1'
             },
-	    {
+            {
                 // 所有widget/page/modules目录下的js文件, 自动包裹成amd
+                reg: /^\/((:widget|page|components)\/(.*)\.js)/i,
+                // 是组件化的，会被jswrapper包装
+                isMod: true,
+                // id是去掉modules和.js后缀中间的部分
+                id: '$2/$3',
+                release: '${statics}/$1',
+                url: '/$1'
+            },
+	    {
+                // 所有widget/page/modules目录下的其他文件, 发布一下
                 reg: /^\/((?:modules|components)\/.*)/i,
                 release: '${statics}/$1',
                 url: '/$1'
@@ -112,7 +136,7 @@ fis.config.merge({
                 release: false
             },
             {
-                // 一级同名页面模板，可以引用短路径，比如page/article_detail/article_detail.html
+                // 所有的页面文件发布到views目录下
                 reg: /^\/page\/([^\/]+)\/\1\.html/i,
                 useCache: false,
                 release: '${templates}/$1'
