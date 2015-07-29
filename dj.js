@@ -108,8 +108,8 @@ fis.config.merge({
                 url: '/$1'
             },
 	    {
-                // 所有widget/page/modules目录下的其他文件, 发布一下
-                reg: /^\/((?:widget/page/modules|components)\/.*)/i,
+                // 所有modules目录下的其他文件, 发布一下
+                reg: /^\/((?:modules|components)\/.*)/i,
                 release: '${statics}/$1',
                 url: '/$1'
             },
