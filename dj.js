@@ -1,4 +1,4 @@
-var fis = module.exports = require('fis');
+var fis = module.exports = require('fis-xxx');
 
 fis.cli.name = 'fis-dj';
 fis.cli.info = fis.util.readJSON(__dirname + '/package.json');
