@@ -1,6 +1,6 @@
 {
   "name": "fis-dj",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Dajia frondend building system based on FIS.",
   "main": "dj.js",
   "bin": {
@@ -18,7 +18,7 @@
   },
   "license": "BSD",
   "dependencies": {
-    "fis-xxx": "^1.9.22",
+    "fis-xxx": "^1.9.23",
     "fis-lint-jshint": "0.0.10",
     "fis-parser-coffee-script": "0.0.2",
     "fis-parser-jade": "0.0.11",
